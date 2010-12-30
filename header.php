@@ -2,7 +2,22 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<title><?php if(is_home()) bloginfo('name'); else wp_title(''); ?></title>
+	<title>
+		<?php
+		if (is_home() || is_page('Home')) { bloginfo('name'); echo " - "; bloginfo('description'); } 
+		else {
+			if (function_exists('is_tag') && is_tag()) { single_tag_title("Tag Archive for ")."\"";echo " - "; bloginfo('name'); } 
+			elseif (is_archive()) { wp_title('')." Archive"; echo " - "; bloginfo('name'); } 
+			elseif (is_search()) { echo "Search for ".wp_specialchars($s)."\""; echo " - "; bloginfo('name'); } 
+			elseif (!(is_404()) && (is_single()) || (is_page())) {
+				wp_title(''); echo " - "; 
+				if ($paged>1) { echo " page ".$paged." of ".$wp_query->max_num_pages." - "; } 
+				bloginfo('name'); 
+			} 
+			elseif (is_404()) { echo 'Not Found'; echo " - "; bloginfo('name'); }
+		}
+		?>
+	</title>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	
