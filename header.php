@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<title>
 		<?php
 		if (is_home() || is_page('Home')) { bloginfo('name'); echo " - "; bloginfo('description'); } 
@@ -19,7 +20,6 @@
 		?>
 	</title>
 
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
 	
@@ -48,5 +48,4 @@
 		<p><?php bloginfo( 'description' ); ?></p>
 	</div>
 
-	<div class="clearfix" id="mainbody">
-		<h2>Something to Push</h2>
+	<div class="clearfix" id="main">

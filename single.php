@@ -1,28 +1,18 @@
-<?php 
-	get_header();
+<?php get_header(); ?>
 
-	if ( have_posts() ):
-	while ( have_posts() ) : the_post();
 
-		postsTemplate(false);
-		
-		comments_template();
+<h2 class="postTitle"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+<small><?php the_date(); ?> by <?php the_author(); ?></small>
 
-	endwhile; 
-	else: 
-?>
-
-    <p>Sorry, that post was not found.  Try Searching.</p>
-	<?php get_search_form(); ?>
-
-	<script type="text/javascript">
-		// focus on search field after it has loaded
-		document.getElementById('s') && document.getElementById('s').focus();
-	</script>
-	
+<div class="post">
 <?php
-	endif;
-
-	get_sidebar();
-	get_footer();
-?>
+the_post();
+the_content(); ?>
+</div>
+<p class="postMeta">
+<?php the_date(); ?>
+<span class="comment-bubble"><?php comments_popup_link(__('0'), __('1'), __('%')); ?></span>
+<?php edit_post_link(__('Edit'), ' | '); ?>
+<span class="cats"><?php the_category(', '); ?></span></p>
+	
+<?php get_footer(); ?>

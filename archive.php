@@ -24,30 +24,36 @@
 
 <?php } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
 <h1>Blog Archives</h1>
-
+ <ol id="posts">
 <?php }
 
-while (have_posts()) : the_post(); 
+while (have_posts()) : the_post(); ?>
 
-postsTemplate(false);
+	<li class="postWrapper" id="post-<?php the_ID(); ?>">
+	
+	<h2 class="postTitle"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+	<small><?php the_date(); ?> by <?php the_author(); ?></small>
+	
+	<div class="post"><?php the_content(__('(more...)')); ?></div>
+	<p class="postMeta">
+	<?php the_date(); ?>
+	<span class="comment-bubble"><?php comments_popup_link(__('0'), __('1'), __('%')); ?></span>
+	<?php edit_post_link(__('Edit'), ' | '); ?>
+	<span class="cats"><?php the_category(', '); ?></span></p>
+	</li>
 
-comments_template();
+<?php comments_template();
 
-endwhile; 
-else: 
-?>
+endwhile; ?>
+</ol>
+<?php else: ?>
 
 <p>Sorry, that post was not found.  Try Searching.</p>
 <?php get_search_form(); ?>
 
-<script type="text/javascript">
-// focus on search field after it has loaded
-document.getElementById('s') && document.getElementById('s').focus();
-</script>
 
 <?php
 endif;
 
-get_sidebar();
 get_footer();
 ?>

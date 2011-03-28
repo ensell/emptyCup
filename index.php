@@ -14,9 +14,11 @@
       <small><?php the_date(); ?> by <?php the_author(); ?></small>
 
       <div class="post"><?php the_content(__('(more...)')); ?></div>
-      <p class="postMeta">Category: <?php the_category(', ') . " " . the_tags(__('Tags: '), ', ', ' | ') . comments_popup_link(__('Comments (0)'), __('Comments (1)'), __('Comments (%)')) . edit_post_link(__('Edit'), ' | '); ?></p>
-
-      <hr class="noCss" />
+		<p class="postMeta">
+		<?php the_date(); ?>
+		<span class="comment-bubble"><?php comments_popup_link(__('0'), __('1'), __('%')); ?></span>
+		<?php edit_post_link(__('Edit'), ' | '); ?>
+		<span class="cats"><?php the_category(', '); ?></span></p>
     </li>
 
     <?php comments_template(); // Get wp-comments.php template ?>
