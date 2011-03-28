@@ -20,11 +20,31 @@ strong { font-weight:bold }
 em { font-style:italic }
 a img { border:none } /* Gets rid of IE's blue borders */
 
+/* New Clearfix */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+* html .clearfix				 { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
 /* Generic Styling */
 h1, h2, h3 { font-weight: normal; margin: 0 0 10px 0; }
 h1 { }
 h2 { }
 h3 { }
+h1 a, h2 a, h3 a, h4 a {
+	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	text-shadow: inherit;
+	text-decoration: inherit;
+}
 
 p { margin: 0 0 10px 0; }
 a { }
@@ -130,7 +150,6 @@ ol.commentlist li.thread-odd { }
 @media print {
 
 .do-not-print { display: none; }
-#comments { page-break-before: always; }
 
 body { width: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.4; word-spacing: 1.1pt; letter-spacing: 0.2pt; font-family: Garamond,"Times New Roman", serif; color: #000; background: none; font-size: 12pt; }
 h1,h2,h3,h4,h5,h6 { font-family: Helvetica, Arial, sans-serif; }
@@ -151,5 +170,12 @@ thead { display: table-header-group; }
 tr { page-break-inside: avoid; } 
 a { text-decoration: none; color: black; }
 #comments { page-break-before: always; }
+#main a:after {
+	content: " [" attr(href) "] ";
+	font-size: smaller;
+	text-decoration: none;
+}
+#nav { display: none; }
+form { display: none; }
 	
 } /* END print media */
