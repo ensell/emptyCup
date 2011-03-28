@@ -45,6 +45,10 @@ h1 a, h2 a, h3 a, h4 a {
 	text-shadow: inherit;
 	text-decoration: inherit;
 }
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
 
 p { margin: 0 0 10px 0; }
 a { }
@@ -89,6 +93,9 @@ textarea { }
 #header {
 	
 }
+/* Navigation */
+#nav ul, #nav li { margin: 0; list-style:none; list-style-image: none; }
+
 
 /* Main Content Area */
 
@@ -149,6 +156,8 @@ ol.commentlist li.thread-odd { }
 
 @media print {
 
+* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+
 .do-not-print { display: none; }
 
 body { width: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.4; word-spacing: 1.1pt; letter-spacing: 0.2pt; font-family: Garamond,"Times New Roman", serif; color: #000; background: none; font-size: 12pt; }
@@ -170,11 +179,13 @@ thead { display: table-header-group; }
 tr { page-break-inside: avoid; } 
 a { text-decoration: none; color: black; }
 #comments { page-break-before: always; }
+abbr[title]:after { content: " (" attr(title) ")"; }
 #main a:after {
 	content: " [" attr(href) "] ";
 	font-size: smaller;
 	text-decoration: none;
 }
+@page { margin: 0.5cm; }
 #nav { display: none; }
 form { display: none; }
 	
